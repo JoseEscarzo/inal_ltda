@@ -1,0 +1,362 @@
+{
+  "info": {
+    "_postman_id": "9d817d74-72e8-40f9-9de3-a5762dad7deb",
+    "name": "inal_ltda",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34418183"
+  },
+  "item": [
+    {
+      "name": "register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Juan Pérez López\",\n  \"email\": \"juan@gmail.com\",\n  \"phone\": \"70001234\",\n  \"password\": \"Abcdef12\",\n  \"password_confirmation\": \"Abcdef12\",\n  \"face_photo_base64\": \"data:image/jpeg;base64,/9j/4AAQ...\",\n  \"face_descriptor\": [0.01, 0.02]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_url}}/register",
+          "host": ["{{api_url}}"],
+          "path": ["register"]
+        },
+        "description": "face_descriptor debe ser un array de 128 números (desde face-api.js en el front). Sustituye el ejemplo por datos reales o usa la app web para registrar."
+      },
+      "response": []
+    },
+    {
+      "name": "verify-otp",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"juan@gmail.com\",\n  \"otp_code\": \"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_url}}/verify-otp",
+          "host": ["{{api_url}}"],
+          "path": ["verify-otp"]
+        },
+        "description": "Si APP_DEBUG=true en Laravel, el OTP también puede venir en la respuesta de register como otp_debug."
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "accept": true
+        }
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"juan@gmail.com\",\n  \"password\": \"Abcdef12\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_url}}/login",
+          "host": ["{{api_url}}"],
+          "path": ["login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "users (listar)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token-auth}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{api_url}}/users",
+          "host": ["{{api_url}}"],
+          "path": ["users"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "users (crear)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token-auth}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"María García\",\n  \"email\": \"maria@gmail.com\",\n  \"phone\": \"71112233\",\n  \"password\": \"Abcdef12\",\n  \"password_confirmation\": \"Abcdef12\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_url}}/users",
+          "host": ["{{api_url}}"],
+          "path": ["users"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "users (mostrar)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token-auth}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{api_url}}/users/1",
+          "host": ["{{api_url}}"],
+          "path": ["users", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "users (actualizar)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token-auth}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"María García Ruiz\",\n  \"email\": \"maria@gmail.com\",\n  \"phone\": \"72223344\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{api_url}}/users/1",
+          "host": ["{{api_url}}"],
+          "path": ["users", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "users (eliminar)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token-auth}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{api_url}}/users/1",
+          "host": ["{{api_url}}"],
+          "path": ["users", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "logout",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token-auth}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{api_url}}/logout",
+          "host": ["{{api_url}}"],
+          "path": ["logout"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "perfil(ejemplo)",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "accept": true
+        }
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token-auth}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{api_url}}/profile",
+          "host": ["{{api_url}}"],
+          "path": ["profile"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "api_url",
+      "value": "http://localhost:8000/api"
+    },
+    {
+      "key": "token-auth",
+      "value": ""
+    }
+  ]
+}

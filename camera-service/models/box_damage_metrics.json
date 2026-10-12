@@ -1,0 +1,9 @@
+{
+  "dataset": "C:\\Users\\Lenovo\\Downloads\\box_damage.v4i.yolov8",
+  "model": "C:\\Users\\Lenovo\\Desktop\\Proyecto\\inal_ltda\\camera-service\\models\\box_damage_best.pt",
+  "epochs": 60,
+  "precision": 0.442,
+  "recall": 0.5459,
+  "map50": 0.5027,
+  "map50_95": 0.2812
+}
